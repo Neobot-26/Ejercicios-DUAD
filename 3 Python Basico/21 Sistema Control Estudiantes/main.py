@@ -1,6 +1,6 @@
 import menu
-print("----------------------------------------------")
-print("Welcome to the Student Control System")
-print("----------------------------------------------")
-print(" Developed by: Didier, 2026")
-menu.menu_options()
+def call_menu():
+    menu.menu_options()
+
+#main of the program
+call_menu()

@@ -104,7 +104,7 @@ def student_top_three_average(list_of_dictionary):
                 aux_name=names_list[index_list2]
                 names_list[index_list2]=names_list[index_list2+1]
                 names_list[index_list2+1]=aux_name
-    while num_register<3:
+    while num_register<len(names_list):
         print(f"Name:{names_list[num_register]}")
         print(f"Average:{top_three[num_register]}")
         print(" ")
@@ -138,46 +138,34 @@ def is_valid_score(score):
     return valid_score
 
 def students_under_sixty(dictionary,head_list):
-    num_register=0
     quantity_of_students=0
     for row in dictionary:
-        if int(row[head_list[2]])<60:
-            print(f"{head_list[0].capitalize()}: {row[head_list[0]]}")
-            print(f"{head_list[1].capitalize()}: {row[head_list[1]]}")
-            print(f"{head_list[2].capitalize()}: {row[head_list[2]]}")
-            if int(row[head_list[3]])<60:
-                print(f"{head_list[3].capitalize()}: {row[head_list[3]]}")
-            if int(row[head_list[4]])<60:
-                print(f"{head_list[4].capitalize()}: {row[head_list[4]]}")
-            if int(row[head_list[5]])<60:
-                print(f"{head_list[5].capitalize()}: {row[head_list[5]]}")
-            print(" ")
-            quantity_of_students=1
-        elif int(row[head_list[3]])<60:
-            print(f"{head_list[0].capitalize()}: {row[head_list[0]]}")
-            print(f"{head_list[1].capitalize()}: {row[head_list[1]]}")
-            print(f"{head_list[3].capitalize()}: {row[head_list[3]]}")
-            if int(row[head_list[4]])<60:
-                print(f"{head_list[4].capitalize()}: {row[head_list[4]]}")
-            if int(row[5])<60:
-                print(f"{head_list[5].capitalize()}: {row[head_list[5]]}")
-            print(" ")
-            quantity_of_students=1
-        elif int(row[head_list[4]])<60:
-            print(f"{head_list[0].capitalize()}: {row[head_list[0]]}")
-            print(f"{head_list[1].capitalize()}: {row[head_list[1]]}")
-            print(f"{head_list[4].capitalize()}: {row[head_list[4]]}")
-            if int(row[head_list[5]])<60:
-                print(f"{head_list[5].capitalize()}: {row[head_list[5]]}")
-            print(" ")
-            quantity_of_students=1
-        elif int(row[head_list[5]])<60:
-            print(f"{head_list[0].capitalize()}: {row[head_list[0]]}")
-            print(f"{head_list[1].capitalize()}: {row[head_list[1]]}")
-            print(f"{head_list[5].capitalize()}: {row[head_list[5]]}")
-            print(" ")
-            quantity_of_students=1
-        num_register+=1
+        spanish_flag=0
+        english_flag=0
+        history_flag=0
+        science_flag=0
+        for index in range(2,6):
+            if int(row[head_list[index]])<60:
+                if index==2:
+                    spanish_flag=1
+                elif index==3:
+                    english_flag=1
+                elif index==4:
+                    history_flag=1
+                elif index==5:
+                    science_flag=1
+                quantity_of_students=1
+        if spanish_flag==1 or english_flag==1 or history_flag==1 or science_flag==1:
+            print(f"{head_list[0].capitalize()}: {row['name']}")
+            print(f"{head_list[1].capitalize()}: {row['classroom']}")
+            if spanish_flag==1:
+                print(f"{head_list[2].capitalize()}: {row['score_spanish']}")
+            if english_flag==1:    
+                print(f"{head_list[3].capitalize()}: {row['score_english']}")
+            if history_flag==1:
+                print(f"{head_list[4].capitalize()}: {row['score_history']}")
+            if science_flag==1:
+                print(f"{head_list[5].capitalize()}: {row['score_science']}")
     if quantity_of_students==0:
         print("There are not failing students in registers")
 
