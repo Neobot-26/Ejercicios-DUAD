@@ -90,6 +90,7 @@ def student_average(list_of_dictionary,list_of_headers):
 
 def student_top_three_average(list_of_dictionary):
     num_register=0
+    qty_register=0
     names_list=[]
     top_three=[]
     for row in list_of_dictionary:
@@ -104,7 +105,11 @@ def student_top_three_average(list_of_dictionary):
                 aux_name=names_list[index_list2]
                 names_list[index_list2]=names_list[index_list2+1]
                 names_list[index_list2+1]=aux_name
-    while num_register<len(names_list):
+    if len(names_list)<3:
+        qty_register=len(names_list)
+    else:
+        qty_register=3
+    while num_register<qty_register:
         print(f"Name:{names_list[num_register]}")
         print(f"Average:{top_three[num_register]}")
         print(" ")
