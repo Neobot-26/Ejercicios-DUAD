@@ -82,11 +82,15 @@ def students_read(list_of_dictionary,list_of_headers):
         print("There is Information of Students")
         
 def student_average(list_of_dictionary,list_of_headers):
+    sum_total=0
+    counter_of_notes=0
+    average_total=0
     for row in list_of_dictionary:
-        print(f"{list_of_headers[0].capitalize()}: {row[list_of_headers[0]]}")
-        print(f"{list_of_headers[1].capitalize()}: {row[list_of_headers[1]]}")
-        print(f"{list_of_headers[6].capitalize()}: {row[list_of_headers[6]]}")
-        print(" ")    
+        sum_total=sum_total+float(row[list_of_headers[6]])
+        counter_of_notes+=1
+    average_total=sum_total/counter_of_notes
+    print(f"Total Average of Students: {average_total}")
+    print(" ")    
 
 def student_top_three_average(list_of_dictionary):
     num_register=0
