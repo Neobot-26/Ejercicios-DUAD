@@ -1,115 +1,32 @@
-PS C:\Didier\Lyfter> git add .
-
-PS C:\Didier\Lyfter> git commit "Prueba de modificación de archivo prueba.txt"
-error: pathspec 'Prueba de modificación de archivo prueba.txt' did not match any file(s) known to git
-
-PS C:\Didier\Lyfter> git commit -m "Prueba de modificación de archivo prueba.txt"
-[experimentacion 37e6ce7] Prueba de modificación de archivo prueba.txt
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-PS C:\Didier\Lyfter> git push
-Enumerating objects: 7, done.
-Counting objects: 100% (7/7), done.
-Delta compression using up to 12 threads
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (4/4), 361 bytes | 361.00 KiB/s, done.
-Total 4 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-remote: This repository moved. Please use the new location:
-remote:   https://github.com/Neobot-26/Ejercicios-DUAD.git
-To https://github.com/Neobot-26/Ejercicios-duad.git
-   954d57d..37e6ce7  experimentacion -> experimentacion
-
-PS C:\Didier\Lyfter> git merge
-Already up to date.
-
-PS C:\Didier\Lyfter> git status
-On branch experimentacion
-Your branch is up to date with 'origin/experimentacion'.
-
-nothing to commit, working tree clean
-
-PS C:\Didier\Lyfter> git checkout main
-Switched to branch 'main'
-Your branch is up to date with 'origin/main'.
-
-PS C:\Didier\Lyfter> git push
-Everything up-to-date
-
-PS C:\Didier\Lyfter> git status       
-On branch main
-Your branch is up to date with 'origin/main'.
-
-nothing to commit, working tree clean
-
-PS C:\Didier\Lyfter> git status
-On branch main
-Your branch is up to date with 'origin/main'.
-
-nothing to commit, working tree clean
-
-PS C:\Didier\Lyfter> git checkout experimentacion
-Switched to branch 'experimentacion'
-Your branch is up to date with 'origin/experimentacion'.
-
-PS C:\Didier\Lyfter> git status
-On branch experimentacion
-Your branch is up to date with 'origin/experimentacion'.
-
-nothing to commit, working tree clean
-PS C:\Didier\Lyfter> 
- *  History restored 
-
-PS C:\Didier\Lyfter> git status
-On branch experimentacion
-Your branch is up to date with 'origin/experimentacion'.
-
-nothing to commit, working tree clean
-PS C:\Didier\Lyfter> git log
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
+commit 7d497e6281516de9c2fb7cb17bfc6320882afcab (HEAD -> experimentacion, origin/experimentacion)
 Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
+Date:   Tue Feb 17 20:40:56 2026 -0600
+
+    Nuevo archivo con el contenido del log de git
+
+################# comentario explicativo ###################
+Nos encontramos en el branch experimentación
+El branch remoto (en GitHub) también está en ese mismo commit.
+Commit generado por Didier valverde
+en la fecha: Tue Feb 17 20:40:56 2026 -0600
+Que cambió:Nuevo archivo con el contenido del log de git
+Por qué se hizo:pruebas
+este es el commit mas reciente de la rama experimentacion.
+##################################################################
+
+commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d
 Author: Didier <valverded@yahoo.com>
 Date:   Mon Feb 16 20:36:18 2026 -0600
 
     Prueba de modificación de archivo prueba.txt
 
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-
-    Prueba de modificación de archivo prueba.txt
-
-commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
-Author: Didier <valverded@yahoo.com>
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-
-    Prueba de modificación de archivo prueba.txt
-
-commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
-Author: Didier <valverded@yahoo.com>
-Date:   Sun Feb 15 10:43:19 2026 -0600
-
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-
-    Prueba de modificación de archivo prueba.txt
-
-commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
-Author: Didier <valverded@yahoo.com>
-Date:   Sun Feb 15 10:43:19 2026 -0600
-
-    ejercicio actualizado
-:...skipping...
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-
-    Prueba de modificación de archivo prueba.txt
+################# comentario explicativo ###################
+Forma parte del historial de la rama experimentacion
+Commit generado por Didier valverde
+en la fecha: Mon Feb 16 20:36:18 2026 -0600
+Que cambió:Representa una modificación del archivo prueba.txt
+Por qué se hizo:pruebas
+##################################################################
 
 commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
 Author: Didier <valverded@yahoo.com>
@@ -117,91 +34,13 @@ Date:   Sun Feb 15 10:43:19 2026 -0600
 
     ejercicio actualizado
 
-:...skipping...
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-
-    Prueba de modificación de archivo prueba.txt
-
-commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
-Author: Didier <valverded@yahoo.com>
-Date:   Sun Feb 15 10:43:19 2026 -0600
-
-    ejercicio actualizado
-
-commit 3f752cc67837e48f09afa34a6c45f05b3c4b0943 (origin/main, origin/HEAD, main)
-:...skipping...
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-
-    Prueba de modificación de archivo prueba.txt
-
-commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
-Author: Didier <valverded@yahoo.com>
-Date:   Sun Feb 15 10:43:19 2026 -0600
-
-    ejercicio actualizado
-
-commit 3f752cc67837e48f09afa34a6c45f05b3c4b0943 (origin/main, origin/HEAD, main)
-Author: Didier <valverded@yahoo.com>
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-
-    Prueba de modificación de archivo prueba.txt
-
-commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
-Author: Didier <valverded@yahoo.com>
-Date:   Sun Feb 15 10:43:19 2026 -0600
-
-    ejercicio actualizado
-
-commit 3f752cc67837e48f09afa34a6c45f05b3c4b0943 (origin/main, origin/HEAD, main)
-Author: Didier <valverded@yahoo.com>
-Date:   Sat Feb 14 20:55:23 2026 -0600
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-
-    Prueba de modificación de archivo prueba.txt
-
-commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
-Author: Didier <valverded@yahoo.com>
-Date:   Sun Feb 15 10:43:19 2026 -0600
-
-    ejercicio actualizado
-
-commit 3f752cc67837e48f09afa34a6c45f05b3c4b0943 (origin/main, origin/HEAD, main)
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-
-    Prueba de modificación de archivo prueba.txt
-
-commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
-Author: Didier <valverded@yahoo.com>
-Date:   Sun Feb 15 10:43:19 2026 -0600
-
-    ejercicio actualizado
-
-commit 3f752cc67837e48f09afa34a6c45f05b3c4b0943 (origin/main, origin/HEAD, main)
-Author: Didier <valverded@yahoo.com>
-Date:   Sat Feb 14 20:55:23 2026 -0600
-
-    Nuevo archivo de texto
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-
-    Prueba de modificación de archivo prueba.txt
-
-commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
-Author: Didier <valverded@yahoo.com>
-Date:   Sun Feb 15 10:43:19 2026 -0600
-
-    ejercicio actualizado
+################# comentario explicativo ###################
+Nos encontramos en el branch experimentación
+Commit generado por Didier valverde
+en la fecha:Sun Feb 15 10:43:19 2026 -0600
+Que cambió:Representa una modificación de un archivo .py
+Por qué se hizo:pruebas
+##################################################################
 
 commit 3f752cc67837e48f09afa34a6c45f05b3c4b0943 (origin/main, origin/HEAD, main)
 Author: Didier <valverded@yahoo.com>
@@ -209,83 +48,26 @@ Date:   Sat Feb 14 20:55:23 2026 -0600
 
     Nuevo archivo de texto
 
-commit 58f1a1f90b3b70ddf9335e1b58092cf3272afb7f
+################# comentario explicativo ###################
+Nos encontramos en el branch experimentación
+Head está apuntando a ese branch
+Commit generado por Didier valverde
+en la fecha:Sat Feb 14 20:55:23 2026 -0600
+Que cambió:Representa la creación de un archivo de texto nuevo
+Por qué se hizo ese cambio:prueba
+##################################################################
+
+commit 7d497e6281516de9c2fb7cb17bfc6320882afcab (HEAD -> experimentacion, origin/experimentacion)       
 Author: Didier <valverded@yahoo.com>
-Date:   Sat Feb 14 18:42:48 2026 -0600
-:...skipping...
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
+Date:   Tue Feb 17 20:40:56 2026 -0600
 
-    Prueba de modificación de archivo prueba.txt
+    Nuevo archivo con el contenido del log de git
 
-commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
-Author: Didier <valverded@yahoo.com>
-Date:   Sun Feb 15 10:43:19 2026 -0600
-
-    ejercicio actualizado
-
-commit 3f752cc67837e48f09afa34a6c45f05b3c4b0943 (origin/main, origin/HEAD, main)
-Author: Didier <valverded@yahoo.com>
-Date:   Sat Feb 14 20:55:23 2026 -0600
-
-    Nuevo archivo de texto
-
-commit 58f1a1f90b3b70ddf9335e1b58092cf3272afb7f
-Author: Didier <valverded@yahoo.com>
-Date:   Sat Feb 14 18:42:48 2026 -0600
-
-:...skipping...
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)      
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-
-    Prueba de modificación de archivo prueba.txt
-
-commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
-Author: Didier <valverded@yahoo.com>
-Date:   Sun Feb 15 10:43:19 2026 -0600
-
-    ejercicio actualizado
-
-commit 3f752cc67837e48f09afa34a6c45f05b3c4b0943 (origin/main, origin/HEAD, main)
-Author: Didier <valverded@yahoo.com>
-Date:   Sat Feb 14 20:55:23 2026 -0600
-
-    Nuevo archivo de texto
-
-commit 58f1a1f90b3b70ddf9335e1b58092cf3272afb7f
-Author: Didier <valverded@yahoo.com>
-Date:   Sat Feb 14 18:42:48 2026 -0600
-
-    Actualización del archivo prueba.txt
-
-
-:...skipping...
-commit 37e6ce756b08fd68c894c71906dc9a84ce103e6d (HEAD -> experimentacion, origin/experimentacion)
-Author: Didier <valverded@yahoo.com>
-Date:   Mon Feb 16 20:36:18 2026 -0600
-
-    Prueba de modificación de archivo prueba.txt
-    (Cambio a archivo de texto prueba.txt)
-
-commit 954d57daecab1e0d082664d0c6c392bd3a19c1c5
-Author: Didier <valverded@yahoo.com>
-Date:   Sun Feb 15 10:43:19 2026 -0600
-
-    ejercicio actualizado
-    (Actualización de ejercicio como prueba)
-
-commit 3f752cc67837e48f09afa34a6c45f05b3c4b0943 (origin/main, origin/HEAD, main)
-Author: Didier <valverded@yahoo.com>
-Date:   Sat Feb 14 20:55:23 2026 -0600
-
-    Nuevo archivo de texto
-    (Creación de archivo de texto)
-
-commit 58f1a1f90b3b70ddf9335e1b58092cf3272afb7f 
-Author: Didier <valverded@yahoo.com>
-Date:   Sat Feb 14 18:42:48 2026 -0600
-
-    Actualización del archivo prueba.txt
-(Modificación a archivo de texto prueba.txt)
+################# comentario explicativo ###################
+Nos encontramos en el branch experimentación
+Head está apuntando a ese branch
+Commit generado por Didier valverde
+en la fecha: Tue Feb 17 20:40:56 2026 -0600
+Que cambió:Representa la creación de un nuevo archivo con el contenido del log
+Por qué se hizo:pruebas
+##################################################################
