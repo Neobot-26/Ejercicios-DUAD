@@ -11,18 +11,22 @@ class Torso:
 		self.right_arm = Arm("right")
 		self.left_arm = Arm("left")
 		
+class Arm:
+	def __init__(self, side):
+		self.side = side
+		self.left_hand = Hand("left")
+		self.right_hand = Hand("right")
+
 class Hand:
 	def __init__(self,side):
 		self.fingers = 5
 		self.side = side
 
-class Arm:
-	def __init__(self, side):
-		self.side = side
-
 class Leg:
 	def __init__(self,side):
 		self.side = side
+		self.right_feet = Feet("right")
+		self.left_feet = Feet("left")
 	
 class Feet:
 	def __init__(self,side):
@@ -32,21 +36,14 @@ class Feet:
 class Human:
 	def __init__(self,name):
 		self.name = name
-		self.head = Head()
 		self.torso = Torso()
-		self.left_arm = Arm("left")
-		self.right_arm = Arm("right")
-		self.left_hand = Hand("left")
-		self.right_hand = Hand("right")
 		self.left_leg = Leg("left")
 		self.right_leg = Leg("right")
-		self.left_foot = Feet("left")
-		self.right_foot = Feet("right")
 	
 #Main
 person = Human("Didier")
 print(f"Name:{person.name}")
-print(f"Eyes:{person.head.eyes}")
-print(f"Fingers Left Hand:{person.left_hand.fingers}")
-print(f"Toes Right Foot:{person.right_foot.toes}")
-print(f"Foot:{person.right_foot.side}")
+print(f"Eyes:{person.torso.head.eyes}")
+print(f"Fingers Left Hand:{person.torso.left_arm.left_hand.fingers}")
+print(f"Toes Right Foot:{person.right_leg.right_feet.toes}")
+print(f"Right Foot:{person.right_leg.right_feet.side}")
