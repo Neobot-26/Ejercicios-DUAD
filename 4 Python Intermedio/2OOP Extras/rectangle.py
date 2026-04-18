@@ -4,7 +4,7 @@ class Rectangle():
         self.height = int(input("Enter width of the rectangle:"))
     def get_area(self):
         if self.width<0 or self.height<0:
-            print("Any of two numbers entered are negative, values must be positive")
+            print("Any of two numbers entered are negative, values must be positive...")
         else:
             return self.height*self.width
     def get_perimeter(self):
