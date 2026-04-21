@@ -12,26 +12,26 @@ class Inventory:
         self.product_list.append(product)
 
     def print_products(self):
-        for index in self.product_list:
-            print(f"Name:{index.name}, Price:{index.price}, Quantity:{index.quantity}")
+        for index_of_products in self.product_list:
+            print(f"Name Article:{index_of_products.name}, Price:{index_of_products.price}, Quantity:{index_of_products.quantity}")
 
     def calculate_total_value_of_inventory(self):
-        sum=0
-        for index in self.product_list:
-            sum=sum+index.price*index.quantity
-        return sum
+        sumatory_inventory=0
+        for index_of_products in self.product_list:
+            sumatory_inventory+=index_of_products.price*index_of_products.quantity
+        return sumatory_inventory
     
 #Main
 product1 = Product("Mouse",5000,3)
 product2 = Product("Keyboard",8000,2)
-Inventory1 = Inventory()
+inventory1 = Inventory()
 
 #Add product
-Inventory1.add_product(product1)
-Inventory1.add_product(product2)
+inventory1.add_product(product1)
+inventory1.add_product(product2)
 
 #Print List
-Inventory1.print_products()
+inventory1.print_products()
 
 #Calculate total value of inventary
-print(f"The total value of inventary is:{Inventory1.calculate_total_value_of_inventory()}")
+print(f"The total value of inventary is:{inventory1.calculate_total_value_of_inventory()}")

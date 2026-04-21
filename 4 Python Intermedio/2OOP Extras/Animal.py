@@ -3,19 +3,15 @@ class Animal:
         self.name = name
 
     def speak(self):
-        self.sounds="Make a sound"
-        print(self.sounds)
+        self.sounds="Makes a sound"
+        return self.sounds
         
 class Dog(Animal):
-    def __init__(self,name):
-        self.name=name
     def speak(self):
         self.sounds="Guau"
         return self.sounds
 
 class Cat(Animal):
-    def __init__(self,name):
-        self.name=name
     def speak(self):        
         self.sounds= "Miau"
         return self.sounds
