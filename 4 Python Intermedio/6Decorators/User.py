@@ -19,22 +19,24 @@ class User:
         )
 
 def verify_adult_age(func):
-    def wrapper(age):
-        if age < 18:
+    def wrapper(user, *args, **kwargs):
+        if user.age < 18:
             raise ValueError(
                 "Age under 18.User is not an adult "
             )
-        func(age)
+        return func(user,*args,**kwargs)
     return wrapper
 
 @verify_adult_age
-def verify_age(age):
+def verify_age(user):
     print("The user is an adult")
 
 # =========================
 # Example of use
 # =========================
 
-my_user = User(date(1990, 1, 1))
-print(f"Age: {my_user.age}")
-verify_age(my_user.age)
+my_user1 = User(date(1990, 1, 1))
+
+my_user2 = User(date(2010, 1, 1))
+verify_age(my_user1)
+verify_age(my_user2)
