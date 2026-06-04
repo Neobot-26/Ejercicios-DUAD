@@ -8,5 +8,5 @@ def bubble_sort(list):
     return list
 
 #Main
-list=[100,5,46,1,24,73,12,31]
+list=[100,5,46,1,24,73,12,31,58]
 print(bubble_sort(list))
