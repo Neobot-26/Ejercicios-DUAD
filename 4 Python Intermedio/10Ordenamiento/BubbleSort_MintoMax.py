@@ -1,10 +1,10 @@
 def bubble_sort(list):
     for index in range(len(list)-1):
         for index2 in range(len(list)-1-index):
-            if list[index2]>list[index2+1]:
-                temporary=list[index2]
-                list[index2]=list[index2+1]
-                list[index2+1]=temporary
+            if list[len(list)-1-index2]<list[len(list)-2-index2]:
+                temporary=list[len(list)-1-index2]
+                list[len(list)-1-index2]=list[len(list)-2-index2]
+                list[len(list)-2-index2]=temporary
     return list
 
 #Main
