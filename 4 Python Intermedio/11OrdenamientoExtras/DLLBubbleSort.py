@@ -6,7 +6,7 @@ class Node:
     def __init__(self, data, next=None):
         self.data = data
         self.next = next
-        self.prev = next
+        self.prev = None
 
 
 class DoubleLinkedList:
