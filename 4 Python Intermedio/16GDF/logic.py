@@ -1,105 +1,62 @@
-import csv
-list_data1=[]
-list_data2=[]
-data_movement=[]
+from datetime import datetime, date
+from models import Transaction, Type_Income, Type_Expense
+from persistence import Date_FORMAT
 
 
-class CategoryManager:
-    def __init__(self, file_path='categories.csv'):
-        self.file_path = file_path
+class TransactionValidator:
 
-    def read_categories(self):
-        self.list_data_categories = []
-        self.list_data_color = []
+    @staticmethod
+    def validate_amount(text):
+        try:
+            return float(text)
+        except ValueError:
+            raise ValueError("Invalid amount")
 
-        with open(self.file_path, 'r', encoding='utf-8') as csvfile:
-            reader = csv.reader(csvfile)
+    @staticmethod
+    def validate_date(text):
+        try:
+            dt = datetime.strptime(text, Date_FORMAT)
+        except ValueError:
+            raise ValueError("Invalid date format (use dd/mm/yyyy)")
 
-            # Read Header of csv file
-            next(reader, None)
+        if dt.date() > date.today():
+            raise ValueError("Date cannot be in the future")
 
-            for row in reader:
-                if len(row) >= 2:
-                    self.list_data_categories.append(row[0])
-                    self.list_data_color.append(row[1])
-        return self.list_data_categories, self.list_data_color
+        return dt
 
-    def write_category(self, new_data):
-        with open(self.file_path, "a", newline="", encoding="utf-8") as csv_file:
-            writer = csv.writer(csv_file)
-            writer.writerow(new_data)
+    @staticmethod
+    def create_transaction(date_str, title, amount_str, category, ttype):
+        if not title.strip():
+            raise ValueError("Description cannot be empty")
 
-    def get_categories(self):
-        categories, colors = self.read_categories()
-        return categories, colors
-    
+        amount = TransactionValidator.validate_amount(amount_str)
+        dt = TransactionValidator.validate_date(date_str)
 
-class MovementManager:
-    def __init__(self, path='Gestor.csv'):
-        self.path = path
+        if ttype not in (Type_Income, Type_Expense):
+            raise ValueError("Invalid transaction type")
 
-    def read_movements(self):
-        with open(self.path, newline="", encoding="utf-8") as csv_file:
-            lector = csv.reader(csv_file)
-            next(lector, None)  # Prevent error if file is empty
-            data_movement = list(lector)
-            return data_movement
+        return Transaction(dt, title.strip(), amount, category, ttype)
 
-    def write_movements(self, new_data_to_movements):
-        with open(self.path, "a", newline="", encoding="utf-8") as csv_file:
-            new_writer = csv.writer(csv_file)
-            new_writer.writerow(new_data_to_movements)
 
-def verify_data(data_to_be_reviewed):
-  manager = CategoryManager()
-  valid=0
-  list_data1,list_data2=manager.get_categories()
-  if data_empty(data_to_be_reviewed):
-     for category in list_data1:
-        if category==data_to_be_reviewed:
-          valid=1
-  return valid
+class TransactionFilter:
 
-def data_empty(data_to_verify):
-  data_null=1
-  if data_to_verify=="":
-    data_null=0
-  return data_null
+    @staticmethod
+    def filter_by_date_range(transactions, start_str, end_str):
+        start = TransactionValidator.validate_date(start_str)
+        end = TransactionValidator.validate_date(end_str)
 
-def update_table(window, data, categories):
-  try:
-      window["TABLE"].update(values=data)
-      tree = window["TABLE"].Widget
-      for tag, color in categories.items():
-        tree.tag_configure(tag, foreground=color)
-      items = tree.get_children()
-      for index, line_data in enumerate(data):
-        category = line_data[3].lower()
-        if category in categories:
-          tree.item(items[index], tags=(category,))
-        else:
-          tree.item(items[index], tags=("unknown",))
-  except ValueError:
-      return False, "There is not data for specified range of dates"
+        if start > end:
+            raise ValueError("Start date cannot be greater than end date")
 
-def list_categories(data1,data2):
-  list_merged = []
-  for index_list in range(len(data1)):
-    element1 = data1[index_list]
-    element2 = data2[index_list]
-    new_raw = [element1,element2]
-    list_merged.append(new_raw)
-  return list_merged
+        return [t for t in transactions if start <= t.date <= end]
 
-def update_table_categories(window, data, categories):
-  window["TABLE"].update(values=data)
-  tree = categories["TABLE"].Widget
-  # Create a tag for each unique color
-  unique_colors = set(fila[1] for fila in data)
-  for color in unique_colors:
-    tree.tag_configure(color, foreground=color)
-  # Apply the respective color to each raw
-  items = tree.get_children()
-  for index, data_raw in enumerate(data):
-    color = data_raw[1]
-    tree.item(items[index], tags=(color,))
+    @staticmethod
+    def compute_totals(transactions):
+        income = sum(transaction.amount for transaction in transactions if transaction.is_income())
+        expenses = sum(abs(transaction.amount) for transaction in transactions if transaction.is_expense())
+
+        return {
+            "income": income,
+            "expenses": expenses,
+            "balance": income - expenses,
+        }

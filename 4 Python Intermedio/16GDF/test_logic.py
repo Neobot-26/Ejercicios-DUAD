@@ -1,150 +1,64 @@
-from unittest.mock import mock_open, patch
-
-from logic import (
-    CategoryManager,
-    MovementManager,
-    data_empty,
-    verify_data,
-    list_categories
-)
+import pytest
+from logic import TransactionValidator, TransactionFilter
+from models import Category, Transaction, Type_Income, Type_Expense
+from datetime import datetime
 
 
-# ==========================
-# Tests for data_empty
-# ==========================
-
-def test_data_empty_with_empty_string():
-    assert data_empty("") == 0
+def test_validate_amount_valid():
+    assert TransactionValidator.validate_amount("10.5") == 10.5
 
 
-def test_data_empty_with_text():
-    assert data_empty("Food") == 1
+def test_validate_amount_invalid():
+    with pytest.raises(ValueError):
+        TransactionValidator.validate_amount("abc")
 
 
-# ==========================
-# Tests for list_categories
-# ==========================
-
-def test_list_categories():
-    data1 = ["Food", "Transport"]
-    data2 = ["red", "blue"]
-
-    expected = [
-        ["Food", "red"],
-        ["Transport", "blue"]
-    ]
-
-    assert list_categories(data1, data2) == expected
+def test_validate_date_invalid_format():
+    with pytest.raises(ValueError):
+        TransactionValidator.validate_date("2025-01-01")
 
 
-# ==========================
-# Tests for CategoryManager
-# ==========================
-
-def test_read_categories():
-    csv_content = (
-        "Category,Color\n"
-        "Food,red\n"
-        "Transport,blue\n"
-    )
-
-    manager = CategoryManager("categories.csv")
-
-    with patch("builtins.open", mock_open(read_data=csv_content)):
-        categories, colors = manager.read_categories()
-
-    assert categories == ["Food", "Transport"]
-    assert colors == ["red", "blue"]
+def test_create_transaction_ok():
+    cat = Category("Food")
+    test = TransactionValidator.create_transaction("01/07/2025", "Pizza", "-40", cat, Type_Expense)
+    assert test.title == "Pizza"
+    assert test.amount == -40
+    assert test.category == cat
+    assert test.type == Type_Expense
 
 
-def test_get_categories():
-    manager = CategoryManager()
-
-    with patch.object(
-        manager,
-        "read_categories",
-        return_value=(["Food"], ["red"])
-    ):
-        categories, colors = manager.get_categories()
-
-    assert categories == ["Food"]
-    assert colors == ["red"]
+def test_create_transaction_empty_title():
+    cat = Category("Food")
+    with pytest.raises(ValueError):
+        TransactionValidator.create_transaction("01/07/2025", "   ", "10", cat, Type_Income)
 
 
-def test_write_category():
-    manager = CategoryManager()
+def test_filter_by_date_range():
+    cat = Category("Work")
+    transaction1 = TransactionValidator.create_transaction("01/07/2025", "Salary", "1000", cat, Type_Income)
+    transaction2 = TransactionValidator.create_transaction("10/07/2025", "Bonus", "200", cat, Type_Income)
+    transaction3 = TransactionValidator.create_transaction("20/07/2025", "Extra", "300", cat, Type_Income)
 
-    m = mock_open()
-
-    with patch("builtins.open", m):
-        manager.write_category(["Food", "red"])
-
-    m.assert_called_once()
-
-
-# ==========================
-# Tests for MovementManager
-# ==========================
-
-def test_read_movements():
-    csv_content = (
-        "Date,Description,Amount\n"
-        "01/01/2026,Salary,1000\n"
-        "02/01/2026,Food,-10\n"
-    )
-
-    manager = MovementManager("Gestor.csv")
-
-    with patch("builtins.open", mock_open(read_data=csv_content)):
-        data = manager.read_movements()
-
-    assert len(data) == 2
-    assert data[0] == ["01/01/2026", "Salary", "1000"]
-    assert data[1] == ["02/01/2026", "Food", "-10"]
+    filtered = TransactionFilter.filter_by_date_range([transaction1, transaction2, transaction3], "01/07/2025", "15/07/2025")
+    assert len(filtered) == 2
 
 
-def test_write_movements():
-    manager = MovementManager()
+def test_compute_totals():
+    cat = Category("Mixed")
+    transaction1 = Transaction(datetime(2025, 7, 1), "Salary", 1000, cat, Type_Income)
+    transaction2 = Transaction(datetime(2025, 7, 2), "Food", -100, cat, Type_Expense)
 
-    m = mock_open()
+    totals = TransactionFilter.compute_totals([transaction1, transaction2])
 
-    with patch("builtins.open", m):
-        manager.write_movements(
-            ["01/01/2026", "Salary", "1000"]
-        )
-
-    m.assert_called_once()
-
-
-# ==========================
-# Tests for verify_data
-# ==========================
-
-def test_verify_data_valid_category():
-
-    with patch.object(
-        CategoryManager,
-        "get_categories",
-        return_value=(["food", "transport"], ["red", "blue"])
-    ):
-        assert verify_data("food") == 1
+    assert totals["income"] == 1000
+    assert totals["expenses"] == 100
+    assert totals["balance"] == 900
 
 
-def test_verify_data_invalid_category():
+def test_filter_invalid_range():
+    cat = Category("Work")
+    transaction_test = TransactionValidator.create_transaction("01/07/2025", "Salary", "1000", cat, Type_Income)
 
-    with patch.object(
-        CategoryManager,
-        "get_categories",
-        return_value=(["Food", "Transport"], ["red", "blue"])
-    ):
-        assert verify_data("Health") == 0
+    with pytest.raises(ValueError):
+        TransactionFilter.filter_by_date_range([transaction_test], "10/07/2025", "01/07/2025")
 
-
-def test_verify_data_empty_string():
-
-    with patch.object(
-        CategoryManager,
-        "get_categories",
-        return_value=(["Food", "Transport"], ["red", "blue"])
-    ):
-        assert verify_data("") == 0
