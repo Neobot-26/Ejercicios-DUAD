@@ -1,0 +1,72 @@
+color,value
+Black,	#000000
+White,	#FFFFFF
+Red,	#FF0000
+Green,	#00FF00
+Blue,	#0000FF
+Yellow,	#FFFF00
+Cian,	#00FFFF
+Magenta,	#FF00FF
+Grey,	#808080
+Plata,	#C0C0C0
+Dark Red,	#8B0000
+Firebrick,	#B22222
+Crimson,	#DC143C
+Indian Red,	#CD5C5C
+Salmon,	#FA8072
+Light Salmon,	#FFA07A
+Tomato,	#FF6347
+Coral,	#FF7F50
+Orange,	#FFA500
+Dark Orange,	#FF8C00
+Sandy Brown,	#F4A460
+Chocolate,	#D2691E
+Peru,	#CD853F
+Peach Puff,	#FFDAB9
+Gold,	#FFD700
+Goldenrod,	#DAA520
+Khaki,	#F0E68C
+Dark Khaki,	#BDB76B
+Lemon Chiffon,	#FFFACD
+Light Yellow,	#FFFFE0
+Dark Green,	#006400
+Forest Green,	#228B22
+Lime Green,	#32CD32
+Sea Green,	#2E8B57
+Medium Sea Green,	#3CB371
+Spring Green,	#00FF7F
+Lawn Green,	#7CFC00
+Olive Drab,	#6B8E23
+Navy,	#000080
+Royal Blue,	#4169E1
+Dodger Blue,	#1E90FF
+Deep Sky Blue,	#00BFFF
+Sky Blue,	#87CEEB
+Light Sky Blue,	#87CEFA
+Steel Blue,	#4682B4
+Powder Blue,	#B0E0E6
+Purple,	#800080
+Violet,	#EE82EE
+Dark Violet,	#9400D3
+Blue Violet,	#8A2BE2
+Medium Purple,	#9370DB
+Orchid,	#DA70D6
+Plum,	#DDA0DD
+Lavender,	#E6E6FA
+Pink,	#FFC0CB
+Light Pink,	#FFB6C1
+Hot Pink,	#FF69B4
+Deep Pink,	#FF1493
+Pale Violet Red,	#DB7093
+Brown,	#A52A2A
+Saddle Brown,	#8B4513
+Sienna,	#A0522D
+Tan,	#D2B48C
+Burlywood,	#DEB887
+Wheat,	#F5DEB3
+Dark Gray,	#A9A9A9
+Dim Gray,	#696969
+Slate Gray,	#708090
+Dark Slate Gray,	#2F4F4F
+Gainsboro,	#DCDCDC
+Light Gray,	#D3D3D3

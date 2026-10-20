@@ -1,0 +1,19 @@
+Date,Title,Amount,Category,Type
+01/07/2025,Salary,1200.0,Work,Income
+02/07/2025,Pizza,-40.0,Food,Expense
+25/07/2026,Notebooks,200.0,School,Expense
+15/07/2026,Monthly Salary,1500.0,Work,Income
+17/07/2026,Garage Sale,3000.0,House,Income
+18/07/2026,Uniform,150.0,Clothes,Expense
+15/07/2026,Travel to Mexico,2000.0,Travel,Expense
+25/07/2026,Tires of the car,200.0,Car,Expense
+25/07/2026,Shoes,56.0,Shoes,Expense
+25/07/2026,Pants,36.0,Clothes,Expense
+17/07/2026,Taxi,55.0,Travel,Income
+25/07/2026,Electricity,86.0,Electricity,Expense
+18/07/2026,cartridge,200.0,Games,Expense
+
+Totals
+Income: 5755.0
+Expenses: 2968.0
+Balance: 2787.0
